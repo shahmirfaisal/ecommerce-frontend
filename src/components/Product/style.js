@@ -32,4 +32,7 @@ export const useStyles = makeStyles({
   actions: {
     borderTop: "0.5px solid #e4e4e4",
   },
+  media: {
+    backgroundSize: "contain",
+  },
 });

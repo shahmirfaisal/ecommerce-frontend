@@ -10,7 +10,7 @@ import {
 } from "@material-ui/core";
 import { MenuRounded } from "@material-ui/icons";
 import { useStyles } from "./style";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 export const AdminHeader = (props) => {
   const classes = useStyles();
@@ -66,16 +66,33 @@ export const AdminHeader = (props) => {
         </Typography>
 
         <Hidden xsDown>
-          <Typography component={Link} to="/admin">
+          <Typography
+            component={NavLink}
+            activeClassName={classes.activeLink}
+            exact
+            to="/admin"
+          >
             Panel
           </Typography>
-          <Typography component={Link} to="/admin/products">
+          <Typography
+            component={NavLink}
+            activeClassName={classes.activeLink}
+            to="/admin/products"
+          >
             Products
           </Typography>
-          <Typography component={Link} to="/admin/categories">
+          <Typography
+            component={NavLink}
+            activeClassName={classes.activeLink}
+            to="/admin/categories"
+          >
             Categories
           </Typography>
-          <Typography component={Link} to="/admin/orders">
+          <Typography
+            component={NavLink}
+            activeClassName={classes.activeLink}
+            to="/admin/orders"
+          >
             Orders
           </Typography>
         </Hidden>

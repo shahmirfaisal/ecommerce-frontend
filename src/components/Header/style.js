@@ -10,9 +10,7 @@ export const useStyles = makeStyles((theme) => ({
       margin: "auto",
     },
   },
-  heading: {
-    // marginRight: "auto",
-  },
+  heading: {},
   navItems: {
     display: "flex",
     alignItems: "center",
@@ -28,15 +26,6 @@ export const useStyles = makeStyles((theme) => ({
   },
   input: {
     width: "300px",
-    // "& > div::before": {
-    //   borderBottom: "1px solid #3399FF",
-    // },
-    // "& > div::after": {
-    //   borderBottom: "1px solid #3399FF",
-    // },
-    // "& > div:hover:before": {
-    //   borderBottom: "1px solid #3399FF",
-    // },
   },
   activeLink: {
     color: theme.palette.primary.main,

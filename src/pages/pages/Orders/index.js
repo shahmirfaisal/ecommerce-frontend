@@ -51,6 +51,8 @@ export const Orders = ({ admin }) => {
             Orders
           </Typography>
 
+          {orders.length ? null : <Typography>No orders.</Typography>}
+
           <Grid container spacing={4}>
             {orders.map((order) => {
               const items = order?.items?.reduce(

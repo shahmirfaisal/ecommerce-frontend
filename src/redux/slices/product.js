@@ -9,6 +9,7 @@ const initialState = {
   product: null,
   loading: false,
   buttonLoading: false,
+  filter: "All",
 };
 
 const fetchAllProducts = createAsyncThunk(
@@ -60,7 +61,11 @@ const addReview = createAsyncThunk(
 const productsSlice = createSlice({
   name: "products",
   initialState,
-  reducers: {},
+  reducers: {
+    applyFilter(state, action) {
+      state.filter = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchAllProducts.pending, (state, action) => {
@@ -112,5 +117,5 @@ export {
   fetchSearchProducts,
   addReview,
 };
-
+export const { applyFilter } = productsSlice.actions;
 export default productsSlice.reducer;

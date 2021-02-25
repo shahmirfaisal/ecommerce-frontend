@@ -5,7 +5,7 @@ import { history } from "../../utils";
 import { NotificationManager } from "react-notifications";
 
 const initialState = {
-  user: null,
+  user: {},
   loading: false,
   authLoading: false,
   cartLoading: false,
@@ -150,6 +150,7 @@ const usersSlice = createSlice({
       .addCase(isLogin.rejected, (state, action) => {
         state.loading = false;
         localStorage.removeItem("userToken");
+        state.user = null
       })
       .addCase(editUser.pending, (state, action) => {
         state.authLoading = true;

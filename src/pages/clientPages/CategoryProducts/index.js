@@ -15,7 +15,7 @@ export const CategoryProducts = () => {
 
   useEffect(() => {
     dispatch(fetchCategoryProducts(id));
-  }, []);
+  }, [id]);
 
   return (
     <Container maxWidth="lg">

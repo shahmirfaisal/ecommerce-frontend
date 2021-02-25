@@ -149,10 +149,7 @@ export const Header = () => {
                 to="/orders"
                 className={classes.navItems}
               >
-                <LocalMallOutlined />{" "}
-                <Badge badgeContent={cartItems} color="primary">
-                  Orders
-                </Badge>
+                <LocalMallOutlined /> Orders
               </Typography>
               <Typography
                 className={classes.navItems}

@@ -2,4 +2,9 @@ let history;
 
 const setHistory = (historyObj) => (history = historyObj);
 
-export { history, setHistory };
+const filterProducts = (products, filter) => {
+  if (filter == "All") return products;
+  return products.filter((product) => product.category.name == filter);
+};
+
+export { history, setHistory, filterProducts };

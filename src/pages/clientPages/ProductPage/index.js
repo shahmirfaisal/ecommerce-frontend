@@ -55,7 +55,7 @@ export const ProductPage = () => {
               </Typography>
 
               <BigTooltip
-                title={`${product.rating} Rating`}
+                title={`${product.rating?.toFixed(1) || "No"} Rating`}
                 placement="top-start"
                 arrow
               >
@@ -72,12 +72,7 @@ export const ProductPage = () => {
               >
                 ${product.price}
               </Typography>
-              {/* <Typography>{product.description}</Typography> */}
-              <Typography>
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy
-                text ever since the 1500s.
-              </Typography>
+              <Typography>{product.description}</Typography>
               <Badge
                 badgeContent="Out of stock"
                 color="primary"

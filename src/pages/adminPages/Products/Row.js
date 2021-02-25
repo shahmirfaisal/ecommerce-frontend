@@ -110,7 +110,9 @@ export const Row = ({ product }) => {
                   <TableCell>{product.description}</TableCell>
                   <TableCell>{product.category.name}</TableCell>
                   <TableCell>{moment(product.created).fromNow()}</TableCell>
-                  <TableCell>{product.rating || "No rating"}</TableCell>
+                  <TableCell>
+                    {product.rating?.toFixed(1) || "No rating"}
+                  </TableCell>
                   <TableCell>{product.reviews.length}</TableCell>
                   <TableCell>
                     <Button
