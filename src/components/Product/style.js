@@ -11,6 +11,10 @@ export const useStyles = makeStyles({
   name: {
     fontWeight: 600,
     marginBottom: "5px",
+    whiteSpace: "nowrap",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    display: "block",
   },
   price: {
     color: "#FCB941",

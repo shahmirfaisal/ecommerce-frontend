@@ -26,8 +26,8 @@ export const useStyles = makeStyles({
       display: "block",
       width: "100%",
       height: "100%",
-      objectFit: "cover",
-      objectPosition: "top left",
+      objectFit: "contain",
+      objectPosition: "center",
     },
   },
   reviewsDialog: {

@@ -18,13 +18,13 @@ export const useStyles = makeStyles({
     },
   },
   img: {
-    height: "200px",
+    height: "250px",
     "& img": {
       width: "100%",
       height: "100%",
       display: "block",
-      objectFit: "cover",
-      objectPosition: "left",
+      objectFit: "contain",
+      objectPosition: "center",
       boxShadow: "1px 1px 10px rgb(226 226 226)",
     },
   },
