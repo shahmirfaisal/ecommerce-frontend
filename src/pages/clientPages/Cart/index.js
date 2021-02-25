@@ -25,8 +25,9 @@ import {
   decrementFromCart,
   deleteFromCart,
 } from "../../../redux/slices/user";
+import { withUserAuth } from "../../../hoc/withUserAuth";
 
-export const Cart = (props) => {
+export const Cart = withUserAuth(true)((props) => {
   const classes = useStyles();
   const user = useSelector((state) => state.users.user);
   const dispatch = useDispatch();
@@ -137,4 +138,4 @@ export const Cart = (props) => {
       )}
     </Container>
   );
-};
+});

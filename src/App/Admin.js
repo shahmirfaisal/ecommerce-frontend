@@ -11,7 +11,6 @@ export const Admin = () => {
 
   useEffect(() => {
     dispatch(isLogin());
-    console.log("CLUE");
   }, [dispatch]);
 
   return (

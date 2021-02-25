@@ -9,8 +9,8 @@ import { Home } from "../pages/clientPages/Home";
 import { CategoryProducts } from "../pages/clientPages/CategoryProducts";
 import { ProductPage } from "../pages/clientPages/ProductPage";
 import { Checkout } from "../pages/clientPages/Checkout/";
-import { Orders } from "../pages/clientPages/Orders/";
-import { Order } from "../pages/clientPages/Order/";
+import { Orders } from "../pages/pages/Orders/";
+import { Order } from "../pages/pages/Order/";
 
 export const clientRoutes = [
   {

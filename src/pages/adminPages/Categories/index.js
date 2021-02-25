@@ -18,8 +18,9 @@ import { useStyles } from "./style";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCategories, deleteCategory } from "../../../redux/slices/admin";
+import { withAdminAuth } from "../../../hoc/withAdminAuth";
 
-export const Categories = (props) => {
+export const Categories = withAdminAuth(true)((props) => {
   const classes = useStyles();
   const { push } = useHistory();
   const dispatch = useDispatch();
@@ -104,4 +105,4 @@ export const Categories = (props) => {
       )}
     </Container>
   );
-};
+});

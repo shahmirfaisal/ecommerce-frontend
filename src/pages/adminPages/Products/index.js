@@ -23,8 +23,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../../../redux/slices/admin";
 import { Row } from "./Row";
 import { useHistory } from "react-router-dom";
+import { withAdminAuth } from "../../../hoc/withAdminAuth";
 
-export const Products = (props) => {
+export const Products = withAdminAuth(true)((props) => {
   const { push } = useHistory();
   const classes = useStyles();
   const dispatch = useDispatch();
@@ -81,4 +82,4 @@ export const Products = (props) => {
       )}
     </Container>
   );
-};
+});

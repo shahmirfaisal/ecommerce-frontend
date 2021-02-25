@@ -96,6 +96,7 @@ const productsSlice = createSlice({
       })
       .addCase(addReview.fulfilled, (state, action) => {
         state.buttonLoading = false;
+        NotificationManager.success("Review added!");
       })
       .addCase(addReview.rejected, (state, action) => {
         state.buttonLoading = false;

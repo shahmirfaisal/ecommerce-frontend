@@ -20,6 +20,7 @@ import { UserAxios } from "../../../api/instances";
 import * as Api from "../../../api/endpoints";
 import { useHistory } from "react-router-dom";
 import { emptyCart } from "../../../redux/slices/user";
+import { withUserAuth } from "../../../hoc/withUserAuth";
 
 const stripePromise = loadStripe(
   "pk_test_51HY7L7IuPlgS5Yt8yUJxodsQVLzRImwyhBycWSTi4njwihcuahtqN2dUAAwaYDG2ZlErSFZ2eFHwM18uYlIRVKvF00BK4ecBy6"
@@ -27,7 +28,7 @@ const stripePromise = loadStripe(
 
 const getSteps = () => ["Shipping Address", "Payment Info"];
 
-const Checkout = (props) => {
+const Checkout = withUserAuth(true)((props) => {
   const history = useHistory();
   const classes = useStyles();
   const dispatch = useDispatch();
@@ -64,11 +65,6 @@ const Checkout = (props) => {
     const newSkipped = [...skipped.values(), activeStep];
     setSkipped(new Set([...newSkipped]));
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
-  };
-
-  const resetStepsHandler = () => {
-    setSkipped(new Set());
-    setActiveStep(0);
   };
 
   const paymentHandler = async (e) => {
@@ -155,14 +151,11 @@ const Checkout = (props) => {
           </Stepper>
 
           {getStepContent(activeStep)}
-
-          <button onClick={nextStepHandler}>Next</button>
-          <button onClick={resetStepsHandler}>Reset</button>
         </>
       )}
     </Container>
   );
-};
+});
 
 const Component = () => (
   <Elements stripe={stripePromise}>

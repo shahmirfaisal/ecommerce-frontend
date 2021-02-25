@@ -4,8 +4,8 @@ import { Products } from "../pages/adminPages/Products/";
 import { ProductForm } from "../pages/adminPages/ProductForm/";
 import { Categories } from "../pages/adminPages/Categories/";
 import { CategoryForm } from "../pages/adminPages/CategoryForm/";
-import { Orders } from "../pages/clientPages/Orders/";
-import { Order } from "../pages/clientPages/Order/";
+import { Orders } from "../pages/pages/Orders/";
+import { Order } from "../pages/pages/Order/";
 
 export const adminRoutes = [
   {

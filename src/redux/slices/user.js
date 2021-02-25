@@ -103,6 +103,7 @@ const usersSlice = createSlice({
     userLogout(state, action) {
       localStorage.removeItem("userToken");
       state.user = null;
+      NotificationManager.success("Logged out!");
     },
     emptyCart(state, action) {
       state.user.cart = {
@@ -120,6 +121,7 @@ const usersSlice = createSlice({
         state.user = action.payload.user;
         localStorage.setItem("userToken", `Bearer ${action.payload.token}`);
         state.authLoading = false;
+        NotificationManager.success("Signed up!");
       })
       .addCase(signup.rejected, (state, action) => {
         state.authLoading = false;
@@ -132,6 +134,7 @@ const usersSlice = createSlice({
         state.user = action.payload.user;
         localStorage.setItem("userToken", `Bearer ${action.payload.token}`);
         state.authLoading = false;
+        NotificationManager.success("Logged in!");
       })
       .addCase(login.rejected, (state, action) => {
         state.authLoading = false;
@@ -154,6 +157,7 @@ const usersSlice = createSlice({
       .addCase(editUser.fulfilled, (state, action) => {
         state.user = action.payload;
         state.authLoading = false;
+        NotificationManager.success("Profile updated!");
       })
       .addCase(editUser.rejected, (state, action) => {
         state.authLoading = false;
@@ -169,7 +173,11 @@ const usersSlice = createSlice({
       })
       .addCase(addToCart.rejected, (state, action) => {
         state.cartLoading = false;
-        NotificationManager.error(action.error.message);
+        if (action.error.message === "Unauthenticated") {
+          NotificationManager.error("Login to continue!");
+        } else {
+          NotificationManager.error(action.error.message);
+        }
       })
       .addCase(decrementFromCart.pending, (state, action) => {
         state.cartLoading = true;
@@ -188,6 +196,7 @@ const usersSlice = createSlice({
       .addCase(deleteFromCart.fulfilled, (state, action) => {
         state.user = action.payload;
         state.cartLoading = false;
+        NotificationManager.success("Item removed!");
       })
       .addCase(deleteFromCart.rejected, (state, action) => {
         state.cartLoading = false;

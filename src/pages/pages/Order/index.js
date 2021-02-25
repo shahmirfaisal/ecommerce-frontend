@@ -48,6 +48,17 @@ export const Order = ({ admin }) => {
   const { id } = useParams();
   const items = order?.items?.reduce((total, item) => item.quantity + total, 0);
   const buttonLoading = useSelector((state) => state.admin.authLoading);
+  const adminExist = localStorage.getItem("adminToken");
+  const userExist = localStorage.getItem("userToken");
+
+  useEffect(() => {
+    if (admin && !adminExist) {
+      history.replace("/admin/login");
+    }
+    if (!admin && !userExist) {
+      history.replace("/");
+    }
+  }, [userExist, adminExist]);
 
   useEffect(() => {
     dispatch(admin ? fetchAdminOrder(id) : fetchOrder(id));

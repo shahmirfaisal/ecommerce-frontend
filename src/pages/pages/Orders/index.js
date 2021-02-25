@@ -17,7 +17,7 @@ import { useHistory } from "react-router-dom";
 
 export const Orders = ({ admin }) => {
   const classes = useStyles();
-  const { push } = useHistory();
+  const history = useHistory();
   const dispatch = useDispatch();
   const orders = useSelector((state) =>
     admin ? state.admin.orders : state.orders.orders
@@ -25,6 +25,17 @@ export const Orders = ({ admin }) => {
   const contentLoading = useSelector((state) =>
     admin ? state.admin.contentLoading : state.orders.contentLoading
   );
+  const adminExist = localStorage.getItem("adminToken");
+  const userExist = localStorage.getItem("userToken");
+
+  useEffect(() => {
+    if (admin && !adminExist) {
+      history.replace("/admin/login");
+    }
+    if (!admin && !userExist) {
+      history.replace("/");
+    }
+  }, [userExist, adminExist]);
 
   useEffect(() => {
     dispatch(admin ? fetchAdminOrders() : fetchOrders());
@@ -80,8 +91,8 @@ export const Orders = ({ admin }) => {
                       size="small"
                       onClick={() =>
                         admin
-                          ? push(`/admin/order/${order._id}`)
-                          : push(`/order/${order._id}`)
+                          ? history.push(`/admin/order/${order._id}`)
+                          : history.push(`/order/${order._id}`)
                       }
                     >
                       Details

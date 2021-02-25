@@ -13,8 +13,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { Axios } from "../../../api/instances";
 import * as Api from "../../../api/endpoints";
+import { withAdminAuth } from "../../../hoc/withAdminAuth";
 
-export const CategoryForm = ({ edit }) => {
+export const CategoryForm = withAdminAuth(true)(({ edit }) => {
   const classes = useStyles();
   const { id } = useParams();
   const [name, setName] = useState("");
@@ -70,4 +71,4 @@ export const CategoryForm = ({ edit }) => {
       )}
     </Container>
   );
-};
+});

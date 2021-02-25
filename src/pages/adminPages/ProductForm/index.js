@@ -17,8 +17,9 @@ import * as Api from "../../../api/endpoints";
 import { useDispatch, useSelector } from "react-redux";
 import { createProduct, editProduct } from "../../../redux/slices/admin";
 import { useParams } from "react-router-dom";
+import { withAdminAuth } from "../../../hoc/withAdminAuth";
 
-export const ProductForm = ({ edit }) => {
+export const ProductForm = withAdminAuth(true)(({ edit }) => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const [productLoading, setProductLoading] = useState(false);
@@ -220,4 +221,4 @@ export const ProductForm = ({ edit }) => {
       )}
     </Container>
   );
-};
+});

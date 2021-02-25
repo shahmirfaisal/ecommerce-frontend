@@ -189,6 +189,7 @@ const adminSlice = createSlice({
         state.admin = true;
         localStorage.setItem("adminToken", `Bearer ${action.payload.token}`);
         state.authLoading = false;
+        NotificationManager.success("Logged in!");
       })
       .addCase(login.rejected, (state, action) => {
         state.authLoading = false;
@@ -315,6 +316,7 @@ const adminSlice = createSlice({
       .addCase(editAdminOrder.fulfilled, (state, action) => {
         state.order = action.payload;
         state.authLoading = false;
+        NotificationManager.success("Order's status updated!");
       });
   },
 });

@@ -4,6 +4,7 @@ import { Route, Switch, useHistory } from "react-router-dom";
 import { setHistory } from "../utils";
 import { NotificationContainer } from "react-notifications";
 import { appRoutes } from "../routes/appRoutes";
+import { Footer } from "../components/Footer/";
 
 export const App = () => {
   const theme = createMuiTheme({
@@ -33,6 +34,7 @@ export const App = () => {
           <Route {...route} />
         ))}
       </Switch>
+      <Footer />
       <NotificationContainer />
     </ThemeProvider>
   );

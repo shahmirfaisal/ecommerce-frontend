@@ -132,9 +132,7 @@ export const Sidebar = (props) => {
               <ListItemIcon>
                 <LocalMallOutlined />
               </ListItemIcon>
-              <Badge badgeContent={props.cartItems} color="primary">
-                <ListItemText className={classes.text} primary="Orders" />
-              </Badge>
+              <ListItemText className={classes.text} primary="Orders" />
             </ListItem>
 
             <ListItem
