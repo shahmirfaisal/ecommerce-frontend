@@ -47,7 +47,7 @@ export const adminRoutes = [
   {
     path: "/admin/edit-category/:id",
     key: "/admin/edit-category/:id",
-    render: () => <CategoryForm edit />,
+    render: () => <CategoryForm edit={true} />,
   },
   {
     path: "/admin/orders",

@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
 export const withAdminAuth = (auth) => (WrappedComponent) => {
-  return () => {
+  return (props) => {
     const { replace } = useHistory();
     const admin = useSelector((state) => state.admin.admin);
 
@@ -12,6 +12,6 @@ export const withAdminAuth = (auth) => (WrappedComponent) => {
       if (!auth && admin) replace("/admin");
     }, [admin]);
 
-    return <WrappedComponent />;
+    return <WrappedComponent {...props} />;
   };
 };

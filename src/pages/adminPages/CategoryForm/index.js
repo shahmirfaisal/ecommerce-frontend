@@ -34,6 +34,7 @@ export const CategoryForm = withAdminAuth(true)(({ edit }) => {
   useEffect(() => {
     (async () => {
       if (edit) {
+        console.log("Category");
         setCategoryLoading(true);
         const res = await Axios.get(Api.GET_CATEGORY(id));
         setName(res.data.category.name);

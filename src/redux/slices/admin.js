@@ -15,6 +15,7 @@ const login = createAsyncThunk("admin/login", async ({ email, password }) => {
       password,
     });
     history.push("/admin");
+    NotificationManager.success("Logged in!");
     return res.data;
   } catch (error) {
     throw error?.response?.data || error.message;
@@ -118,6 +119,7 @@ const createCategory = createAsyncThunk(
     try {
       const res = await AdminAxios.post(Api.CREATE_CATEGORY, { name });
       history.push("/admin/categories");
+      NotificationManager.success("Category created!");
       return res.data.category;
     } catch (error) {
       throw error?.response?.data || error.message;
@@ -131,6 +133,7 @@ const editCategory = createAsyncThunk(
     try {
       const res = await AdminAxios.patch(Api.UPDATE_CATEGORY(id), { name });
       history.push("/admin/categories");
+      NotificationManager.success("Category updated!");
       return res.data.category;
     } catch (error) {
       throw error?.response?.data || error.message;
@@ -163,12 +166,13 @@ const editAdminOrder = createAsyncThunk(
   "admin/editAdminOrder",
   async ({ id, status }) => {
     const res = await AdminAxios.patch(Api.UPDATE_ORDER(id), { status });
+    NotificationManager.success("Order's status updated!");
     return res.data.order;
   }
 );
 
 const initialState = {
-  admin: false,
+  admin: true,
   authLoading: false,
   loading: false,
   products: [],
@@ -189,7 +193,6 @@ const adminSlice = createSlice({
         state.admin = true;
         localStorage.setItem("adminToken", `Bearer ${action.payload.token}`);
         state.authLoading = false;
-        NotificationManager.success("Logged in!");
       })
       .addCase(login.rejected, (state, action) => {
         state.authLoading = false;
@@ -204,6 +207,7 @@ const adminSlice = createSlice({
       })
       .addCase(isLogin.rejected, (state, action) => {
         state.loading = false;
+        state.admin = false;
         localStorage.removeItem("adminToken");
       })
       .addCase(fetchProducts.pending, (state, action) => {
@@ -265,7 +269,6 @@ const adminSlice = createSlice({
       })
       .addCase(createCategory.fulfilled, (state, action) => {
         state.authLoading = false;
-        // NotificationManager.success("Category created!");
       })
       .addCase(createCategory.rejected, (state, action) => {
         state.authLoading = false;
@@ -276,7 +279,6 @@ const adminSlice = createSlice({
       })
       .addCase(editCategory.fulfilled, (state, action) => {
         state.authLoading = false;
-        // NotificationManager.success("Category updated!");
       })
       .addCase(editCategory.rejected, (state, action) => {
         state.authLoading = false;
@@ -316,7 +318,6 @@ const adminSlice = createSlice({
       .addCase(editAdminOrder.fulfilled, (state, action) => {
         state.order = action.payload;
         state.authLoading = false;
-        NotificationManager.success("Order's status updated!");
       });
   },
 });
