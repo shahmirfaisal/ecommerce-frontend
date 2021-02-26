@@ -65,7 +65,7 @@ export const Order = ({ admin }) => {
 
   useEffect(() => {
     dispatch(admin ? fetchAdminOrder(id) : fetchOrder(id));
-  }, [id]);
+  }, [id, history.location.pathname]);
 
   return (
     <Container maxWidth="lg">
@@ -156,8 +156,6 @@ export const Order = ({ admin }) => {
                 (review) => review.order == order._id
               );
 
-              console.log(reviewExist);
-
               if (order.status === "DELIVERED" && !reviewExist && !admin) {
                 isAddReview = true;
               }
@@ -198,7 +196,7 @@ export const Order = ({ admin }) => {
                         {item.quantity * item.product.price}
                       </Typography>
 
-                      {reviewExist ? (
+                      {!admin && reviewExist ? (
                         <Button variant="contained" disabled>
                           Already reviewed!
                         </Button>
