@@ -34,6 +34,12 @@ const fetchOrder = createAsyncThunk("orders/fetchOrder", async (id) => {
   return res.data.order;
 });
 
+const deleteOrder = createAsyncThunk("orders/deleteOrder", async (id) => {
+  const res = await UserAxios.delete(Api.DELETE_ORDER(id));
+  history.replace("/orders");
+  return res.data.order;
+});
+
 const ordersSlice = createSlice({
   name: "orders",
   initialState,
@@ -59,10 +65,16 @@ const ordersSlice = createSlice({
       .addCase(fetchOrder.fulfilled, (state, action) => {
         state.order = action.payload;
         state.contentLoading = false;
+      })
+      .addCase(deleteOrder.pending, (state, action) => {
+        state.buttonLoading = true;
+      })
+      .addCase(deleteOrder.fulfilled, (state, action) => {
+        state.buttonLoading = false;
       });
   },
 });
 
-export { createPaymentIntent, fetchOrders, fetchOrder };
+export { createPaymentIntent, fetchOrders, fetchOrder, deleteOrder };
 
 export default ordersSlice.reducer;

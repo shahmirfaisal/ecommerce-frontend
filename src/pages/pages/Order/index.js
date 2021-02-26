@@ -12,12 +12,13 @@ import {
   Button,
   CardActions,
   CircularProgress,
+  Box,
 } from "@material-ui/core";
 import {} from "@material-ui/icons";
 import { useStyles } from "./style";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, Link, useHistory, Route } from "react-router-dom";
-import { fetchOrder } from "../../../redux/slices/order";
+import { fetchOrder, deleteOrder } from "../../../redux/slices/order";
 import { fetchAdminOrder, editAdminOrder } from "../../../redux/slices/admin";
 import moment from "moment";
 import { AddReview } from "../../../components/AddReview/";
@@ -49,6 +50,7 @@ export const Order = ({ admin }) => {
   const { id } = useParams();
   const items = order?.items?.reduce((total, item) => item.quantity + total, 0);
   const buttonLoading = useSelector((state) => state.admin.authLoading);
+  const deleteLoading = useSelector((state) => state.orders.buttonLoading);
   const adminExist = localStorage.getItem("adminToken");
   const userExist = localStorage.getItem("userToken");
 
@@ -192,7 +194,7 @@ export const Order = ({ admin }) => {
                         <span>Price</span> ${item.product.price}
                       </Typography>
                       <Typography>
-                        <span>Total Price</span>{" "}
+                        <span>Total Price</span> $
                         {item.quantity * item.product.price}
                       </Typography>
 
@@ -224,6 +226,21 @@ export const Order = ({ admin }) => {
               );
             })}
           </Grid>
+
+          {!admin && order?.status === "DELIVERED" ? (
+            <Box marginTop={4}>
+              <Button
+                variant="contained"
+                color="secondary"
+                size="large"
+                disabled={deleteLoading}
+                onClick={() => dispatch(deleteOrder(id))}
+                endIcon={deleteLoading ? <CircularProgress size={20} /> : null}
+              >
+                Delete order
+              </Button>
+            </Box>
+          ) : null}
         </>
       )}
 
