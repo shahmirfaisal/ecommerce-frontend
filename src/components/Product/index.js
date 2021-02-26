@@ -24,7 +24,7 @@ export const Product = (props) => {
     <Card className={classes.root}>
       <CardActionArea onClick={() => push(`/product/${props._id}`)}>
         <CardMedia
-          style={{ height: "250px" }}
+          style={{ height: "250px", backgroundSize: "contain" }}
           className={classes.media}
           image={props.image}
           title={props.name}
