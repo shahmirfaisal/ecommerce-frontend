@@ -24,6 +24,7 @@ import { fetchProducts } from "../../../redux/slices/admin";
 import { Row } from "./Row";
 import { useHistory } from "react-router-dom";
 import { withAdminAuth } from "../../../hoc/withAdminAuth";
+import { Loader } from "../../../components/Loader/";
 
 export const Products = withAdminAuth(true)((props) => {
   const { push } = useHistory();
@@ -39,7 +40,7 @@ export const Products = withAdminAuth(true)((props) => {
   return (
     <Container maxWidth="lg">
       {loading ? (
-        <Typography>Loading...</Typography>
+        <Loader />
       ) : (
         <>
           <Typography variant="h3" className={classes.heading}>

@@ -5,6 +5,7 @@ import { fetchCategoryProducts } from "../../../redux/slices/product";
 import { useParams } from "react-router-dom";
 import { Container, Typography } from "@material-ui/core";
 import { useStyles } from "./style";
+import { Loader } from "../../../components/Loader/";
 
 export const CategoryProducts = () => {
   const dispatch = useDispatch();
@@ -20,7 +21,7 @@ export const CategoryProducts = () => {
   return (
     <Container maxWidth="lg">
       {loading ? (
-        <Typography>Loading...</Typography>
+        <Loader />
       ) : (
         <>
           <Typography variant="h3" className={classes.heading}>

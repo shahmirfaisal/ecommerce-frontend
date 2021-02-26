@@ -13,7 +13,9 @@ export const Footer = (props) => {
           <Typography variant="h5" component={Link} to="/">
             ReactShop
           </Typography>
-          <Typography component="span">Copyright &copy; 2021.</Typography>
+          <Typography component="span">
+            Copyright &copy; {new Date().getFullYear()}.
+          </Typography>
         </Container>
       </div>
     </footer>

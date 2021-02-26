@@ -21,6 +21,7 @@ import * as Api from "../../../api/endpoints";
 import { useHistory } from "react-router-dom";
 import { emptyCart } from "../../../redux/slices/user";
 import { withUserAuth } from "../../../hoc/withUserAuth";
+import { Loader } from "../../../components/Loader/";
 
 const stripePromise = loadStripe(
   "pk_test_51HY7L7IuPlgS5Yt8yUJxodsQVLzRImwyhBycWSTi4njwihcuahtqN2dUAAwaYDG2ZlErSFZ2eFHwM18uYlIRVKvF00BK4ecBy6"
@@ -132,7 +133,7 @@ const Checkout = withUserAuth(true)((props) => {
   return (
     <Container maxWidth="lg">
       {contentLoading ? (
-        <Typography>Loading...</Typography>
+        <Loader />
       ) : (
         <>
           <Stepper activeStep={activeStep} className={classes.stepper}>

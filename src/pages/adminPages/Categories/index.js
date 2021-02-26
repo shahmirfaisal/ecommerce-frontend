@@ -19,6 +19,7 @@ import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCategories, deleteCategory } from "../../../redux/slices/admin";
 import { withAdminAuth } from "../../../hoc/withAdminAuth";
+import { Loader } from "../../../components/Loader/";
 
 export const Categories = withAdminAuth(true)((props) => {
   const classes = useStyles();
@@ -35,7 +36,7 @@ export const Categories = withAdminAuth(true)((props) => {
   return (
     <Container maxWidth="lg">
       {loading ? (
-        <Typography>Loading...</Typography>
+        <Loader />
       ) : (
         <>
           <Typography variant="h3" className={classes.heading}>

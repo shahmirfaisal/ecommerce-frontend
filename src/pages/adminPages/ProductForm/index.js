@@ -18,6 +18,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { createProduct, editProduct } from "../../../redux/slices/admin";
 import { useParams } from "react-router-dom";
 import { withAdminAuth } from "../../../hoc/withAdminAuth";
+import { Loader } from "../../../components/Loader/";
 
 export const ProductForm = withAdminAuth(true)(({ edit }) => {
   const { id } = useParams();
@@ -123,7 +124,7 @@ export const ProductForm = withAdminAuth(true)(({ edit }) => {
   return (
     <Container maxWidth="lg">
       {productLoading ? (
-        <Typography>Loading...</Typography>
+        <Loader />
       ) : (
         <>
           <Typography variant="h3" className={classes.heading}>

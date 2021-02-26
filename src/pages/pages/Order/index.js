@@ -21,6 +21,7 @@ import { fetchOrder } from "../../../redux/slices/order";
 import { fetchAdminOrder, editAdminOrder } from "../../../redux/slices/admin";
 import moment from "moment";
 import { AddReview } from "../../../components/AddReview/";
+import { Loader } from "../../../components/Loader/";
 
 const showStatus = (status) => {
   switch (status) {
@@ -67,7 +68,7 @@ export const Order = ({ admin }) => {
   return (
     <Container maxWidth="lg">
       {contentLoading ? (
-        <Typography>Loading...</Typography>
+        <Loader />
       ) : (
         <>
           <Typography className={classes.heading} variant="h3">

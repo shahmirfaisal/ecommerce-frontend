@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { TextField, MenuItem } from "@material-ui/core";
 import {} from "@material-ui/icons";
 import { useStyles } from "./style";
@@ -10,6 +10,10 @@ export const Filter = (props) => {
   const dispatch = useDispatch();
   const categories = useSelector((state) => state.categories.categories);
   const [filter, setFilter] = useState("All");
+
+  useEffect(() => {
+    dispatch(applyFilter("All"));
+  }, []);
 
   const changeFilterHandler = (e) => {
     setFilter(e.target.value);

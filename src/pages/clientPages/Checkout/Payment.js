@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect } from "react";
 import {
   Button,
   CircularProgress,
@@ -8,14 +8,16 @@ import {
 } from "@material-ui/core";
 import {} from "@material-ui/icons";
 import { useStyles } from "./style";
-import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
+import { CardElement } from "@stripe/react-stripe-js";
 import { useSelector } from "react-redux";
 
 export const Payment = (props) => {
   const classes = useStyles();
-  const stripe = useStripe();
-  const elements = useElements();
   const user = useSelector((state) => state.users.user);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const cardStyle = {
     style: {

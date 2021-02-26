@@ -14,6 +14,7 @@ import { fetchOrders } from "../../../redux/slices/order";
 import { fetchAdminOrders } from "../../../redux/slices/admin";
 import moment from "moment";
 import { useHistory } from "react-router-dom";
+import { Loader } from "../../../components/Loader/";
 
 export const Orders = ({ admin }) => {
   const classes = useStyles();
@@ -44,7 +45,7 @@ export const Orders = ({ admin }) => {
   return (
     <Container maxWidth="lg">
       {contentLoading ? (
-        <Typography>Loading...</Typography>
+        <Loader />
       ) : (
         <>
           <Typography className={classes.heading} variant="h3">

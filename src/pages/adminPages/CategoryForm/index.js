@@ -14,6 +14,7 @@ import { useParams } from "react-router-dom";
 import { Axios } from "../../../api/instances";
 import * as Api from "../../../api/endpoints";
 import { withAdminAuth } from "../../../hoc/withAdminAuth";
+import { Loader } from "../../../components/Loader/";
 
 export const CategoryForm = withAdminAuth(true)(({ edit }) => {
   const classes = useStyles();
@@ -46,7 +47,7 @@ export const CategoryForm = withAdminAuth(true)(({ edit }) => {
   return (
     <Container maxWidth="lg">
       {categoryLoading ? (
-        <Typography>Loading...</Typography>
+        <Loader />
       ) : (
         <>
           <Typography variant="h3" className={classes.heading}>

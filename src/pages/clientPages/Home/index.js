@@ -8,6 +8,7 @@ import { fetchAllProducts } from "../../../redux/slices/product";
 import { Search } from "../../../components/Search/";
 import { Filter } from "../../../components/Filter/";
 import { filterProducts } from "../../../utils";
+import { Loader } from "../../../components/Loader/";
 
 export const Home = () => {
   const classes = useStyles();
@@ -41,7 +42,7 @@ export const Home = () => {
       </Box>
 
       {loading ? (
-        <Typography>Loading...</Typography>
+        <Loader />
       ) : (
         <Products products={filterProducts(products, filter)} />
       )}

@@ -4,6 +4,7 @@ import { Route, Switch, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { isLogin } from "../redux/slices/user";
 import { clientRoutes } from "../routes/clientRoutes";
+import { Loader } from "../components/Loader/";
 
 export const Client = () => {
   const dispatch = useDispatch();
@@ -21,7 +22,7 @@ export const Client = () => {
   return (
     <>
       {loading ? (
-        <div>Loading...</div>
+        <Loader />
       ) : (
         <>
           <Header />

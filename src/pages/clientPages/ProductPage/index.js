@@ -23,6 +23,7 @@ import { fetchProduct } from "../../../redux/slices/product";
 import moment from "moment";
 import { addToCart } from "../../../redux/slices/user";
 import { Review } from "../../../components/Review/";
+import { Loader } from "../../../components/Loader/";
 
 export const ProductPage = () => {
   const dispatch = useDispatch();
@@ -39,7 +40,7 @@ export const ProductPage = () => {
   return (
     <Container maxWidth="lg" className={classes.root}>
       {loading || !product ? (
-        <Typography>Loading...</Typography>
+        <Loader />
       ) : (
         <>
           <Grid container spacing={3}>

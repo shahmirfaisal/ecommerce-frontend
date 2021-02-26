@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchSearchProducts } from "../../../redux/slices/product";
 import { Container, Typography } from "@material-ui/core";
 import { useLocation } from "react-router-dom";
+import { Loader } from "../../../components/Loader/";
 
 export const SearchPage = (props) => {
   const dispatch = useDispatch();
@@ -21,7 +22,7 @@ export const SearchPage = (props) => {
   return (
     <Container maxWidth="lg">
       {loading ? (
-        <Typography>Loading...</Typography>
+        <Loader />
       ) : (
         <>
           <Typography variant="h3" className={classes.heading}>
