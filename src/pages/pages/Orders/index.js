@@ -77,7 +77,7 @@ export const Orders = ({ admin }) => {
                       <span>Date</span> {moment(order.date).fromNow()}
                     </Typography>
                     <Typography>
-                      <span>Price</span> {order.price}
+                      <span>Price</span> ${order.price}
                     </Typography>
                     <Typography>
                       <span>Status</span>{" "}
