@@ -47,4 +47,9 @@ export const useStyles = makeStyles((theme) => ({
     backgroundColor: "white",
     padding: "20px",
   },
+  demoCard: {
+    padding: "5px 10px",
+    marginTop: "20px",
+    maxWidth: "500px",
+  },
 }));
