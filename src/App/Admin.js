@@ -1,17 +1,22 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { isLogin } from "../redux/slices/admin";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, useHistory } from "react-router-dom";
 import { adminRoutes } from "../routes/adminRoutes";
 import { AdminHeader } from "../components/AdminHeader/";
 
 export const Admin = () => {
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.admin.loading);
+  const history = useHistory();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [history.location.pathname]);
 
   useEffect(() => {
     dispatch(isLogin());
-  }, [dispatch]);
+  }, []);
 
   return (
     <>
