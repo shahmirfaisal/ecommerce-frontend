@@ -10,7 +10,10 @@ export const useStyles = makeStyles((theme) => ({
       margin: "auto",
     },
   },
-  heading: {},
+  heading: {
+    fontSize: "26px",
+    fontWeight: 600,
+  },
   navItems: {
     display: "flex",
     alignItems: "center",
