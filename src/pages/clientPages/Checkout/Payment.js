@@ -3,12 +3,13 @@ import { Button, CircularProgress } from "@material-ui/core";
 import {} from "@material-ui/icons";
 import { useStyles } from "./style";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
+import { useSelector } from "react-redux";
 
 export const Payment = (props) => {
   const classes = useStyles();
   const stripe = useStripe();
   const elements = useElements();
-  // const [disabled, setDisabled] = useState(true);
+  const user = useSelector((state) => state.users.user);
 
   const cardStyle = {
     style: {
@@ -42,7 +43,7 @@ export const Payment = (props) => {
           style={{ color: "white" }}
           endIcon={props.processing ? <CircularProgress size={20} /> : null}
         >
-          Pay Now
+          Pay ${user?.cart?.price}
         </Button>
       </form>
     </section>

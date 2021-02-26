@@ -16,6 +16,10 @@ html {
   min-height: 100vh;
 }
 
+body {
+  overflow-x: hidden;
+}
+
 a {
   text-decoration: none;
   color: inherit;
