@@ -9,7 +9,7 @@ export const Order = ({ order }) => {
   return (
     <Card className={classes.card}>
       <Typography>
-        <span>ID</span> <Chip label={order._id} size="small" />
+        <span>Order ID</span> <Chip label={order._id} size="small" />
       </Typography>
       <Typography>
         <span>Products</span> {order.items.length}
@@ -21,7 +21,7 @@ export const Order = ({ order }) => {
         <span>Date</span> {moment(order.date).fromNow()}
       </Typography>
       <Typography>
-        <span>Price</span> {order.price}
+        <span>Price</span> ${order.price}
       </Typography>
       <Typography>
         <span>Status</span>{" "}
