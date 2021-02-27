@@ -25,6 +25,10 @@ export const useStyles = makeStyles({
   },
   productName: {
     fontWeight: 700,
-    paddingBottom: "20px",
+    paddingBottom: "15px",
+    whiteSpace: "nowrap",
+    display: "block",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
   },
 });

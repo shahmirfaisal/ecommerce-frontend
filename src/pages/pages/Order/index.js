@@ -169,7 +169,7 @@ export const Order = ({ admin }) => {
                       }
                     >
                       <CardMedia
-                        style={{ height: "250px" }}
+                        style={{ height: "250px", backgroundSize: "contain" }}
                         className={classes.media}
                         image={item.product.image}
                         title={item.product.name}
