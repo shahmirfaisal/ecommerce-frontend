@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from "react"
 import {
   Drawer,
   List,
@@ -7,8 +7,8 @@ import {
   ListItemText,
   Menu,
   MenuItem,
-  Badge,
-} from "@material-ui/core";
+  Badge
+} from "@material-ui/core"
 import {
   HomeOutlined,
   CategoryOutlined,
@@ -18,22 +18,23 @@ import {
   VpnKeyOutlined,
   ShoppingCartOutlined,
   LocalMallOutlined,
-} from "@material-ui/icons";
-import { useStyles } from "./style";
-import { useSelector, useDispatch } from "react-redux";
-import { NavLink } from "react-router-dom";
-import { Search } from "../Search/";
-import { userLogout } from "../../redux/slices/user";
+  SecurityOutlined
+} from "@material-ui/icons"
+import { useStyles } from "./style"
+import { useSelector, useDispatch } from "react-redux"
+import { NavLink } from "react-router-dom"
+import { Search } from "../Search/"
+import { userLogout } from "../../redux/slices/user"
 
 export const Sidebar = (props) => {
-  const dispatch = useDispatch();
-  const categories = useSelector((state) => state.categories.categories);
-  const [anchorEl, setAnchorEl] = useState(null);
-  const classes = useStyles();
-  const user = useSelector((state) => state.users.user);
+  const dispatch = useDispatch()
+  const categories = useSelector((state) => state.categories.categories)
+  const [anchorEl, setAnchorEl] = useState(null)
+  const classes = useStyles()
+  const user = useSelector((state) => state.users.user)
 
-  const openDropDown = (e) => setAnchorEl(e.currentTarget);
-  const closeDropDown = () => setAnchorEl(null);
+  const openDropDown = (e) => setAnchorEl(e.currentTarget)
+  const closeDropDown = () => setAnchorEl(null)
 
   const CategoriesDropdown = (
     <Menu
@@ -47,8 +48,8 @@ export const Sidebar = (props) => {
           component={NavLink}
           to={`/category/${_id}`}
           onClick={() => {
-            closeDropDown();
-            props.onClose();
+            closeDropDown()
+            props.onClose()
           }}
           key={_id}
         >
@@ -56,7 +57,7 @@ export const Sidebar = (props) => {
         </MenuItem>
       ))}
     </Menu>
-  );
+  )
 
   return (
     <Drawer
@@ -138,8 +139,8 @@ export const Sidebar = (props) => {
             <ListItem
               button
               onClick={() => {
-                dispatch(userLogout());
-                props.onClose();
+                dispatch(userLogout())
+                props.onClose()
               }}
             >
               <ListItemIcon>
@@ -163,9 +164,21 @@ export const Sidebar = (props) => {
             </ListItem>
           </>
         )}
+
+        <ListItem
+          button
+          component={NavLink}
+          to="/admin"
+          onClick={props.onClose}
+        >
+          <ListItemIcon>
+            <SecurityOutlined />
+          </ListItemIcon>
+          <ListItemText className={classes.text} primary="Admin" />
+        </ListItem>
       </List>
 
       {CategoriesDropdown}
     </Drawer>
-  );
-};
+  )
+}

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from "react"
 import {
   AppBar,
   Toolbar,
@@ -7,9 +7,9 @@ import {
   MenuItem,
   IconButton,
   Hidden,
-  Badge,
-} from "@material-ui/core";
-import { useStyles } from "./style";
+  Badge
+} from "@material-ui/core"
+import { useStyles } from "./style"
 import {
   ExpandMoreOutlined,
   HomeOutlined,
@@ -20,35 +20,36 @@ import {
   VpnKeyOutlined,
   ShoppingCartOutlined,
   LocalMallOutlined,
-} from "@material-ui/icons";
-import { Sidebar } from "../Sidebar/";
-import { MenuRounded } from "@material-ui/icons";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchCategories } from "../../redux/slices/category";
-import { NavLink } from "react-router-dom";
-import { Search } from "../Search/";
-import { userLogout } from "../../redux/slices/user";
+  SecurityOutlined
+} from "@material-ui/icons"
+import { Sidebar } from "../Sidebar/"
+import { MenuRounded } from "@material-ui/icons"
+import { useDispatch, useSelector } from "react-redux"
+import { fetchCategories } from "../../redux/slices/category"
+import { NavLink } from "react-router-dom"
+import { Search } from "../Search/"
+import { userLogout } from "../../redux/slices/user"
 
 export const Header = () => {
-  const dispatch = useDispatch();
-  const categories = useSelector((state) => state.categories.categories);
-  const user = useSelector((state) => state.users.user);
-  const classes = useStyles();
-  const [anchorEl, setAnchorEl] = useState(null);
-  const [openSidebar, setOpenSidebar] = useState(false);
+  const dispatch = useDispatch()
+  const categories = useSelector((state) => state.categories.categories)
+  const user = useSelector((state) => state.users.user)
+  const classes = useStyles()
+  const [anchorEl, setAnchorEl] = useState(null)
+  const [openSidebar, setOpenSidebar] = useState(false)
   const cartItems = user?.cart?.items?.reduce((total, value) => {
-    return value.quantity + total;
-  }, 0);
+    return value.quantity + total
+  }, 0)
 
   useEffect(() => {
-    dispatch(fetchCategories());
-  }, []);
+    dispatch(fetchCategories())
+  }, [])
 
-  const closeDropdownHandler = () => setAnchorEl(null);
-  const openDropdownHandler = (e) => setAnchorEl(e.currentTarget);
+  const closeDropdownHandler = () => setAnchorEl(null)
+  const openDropdownHandler = (e) => setAnchorEl(e.currentTarget)
 
-  const handleOpenSidebar = () => setOpenSidebar(true);
-  const handleCloseSidebar = () => setOpenSidebar(false);
+  const handleOpenSidebar = () => setOpenSidebar(true)
+  const handleCloseSidebar = () => setOpenSidebar(false)
 
   const dropdown = (
     <Menu
@@ -68,7 +69,7 @@ export const Header = () => {
         </MenuItem>
       ))}
     </Menu>
-  );
+  )
 
   return (
     <AppBar
@@ -169,6 +170,15 @@ export const Header = () => {
               <VpnKeyOutlined /> Login
             </Typography>
           )}
+          <Typography
+            component={NavLink}
+            activeClassName={classes.activeLink}
+            exact
+            to="/admin"
+            className={classes.navItems}
+          >
+            <SecurityOutlined /> Admin
+          </Typography>
         </Hidden>
 
         <Hidden lgUp>
@@ -189,5 +199,5 @@ export const Header = () => {
         />
       </Toolbar>
     </AppBar>
-  );
-};
+  )
+}

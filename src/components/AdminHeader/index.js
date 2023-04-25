@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from "react"
 import {
   AppBar,
   Typography,
@@ -6,18 +6,18 @@ import {
   IconButton,
   Hidden,
   Menu,
-  MenuItem,
-} from "@material-ui/core";
-import { MenuRounded } from "@material-ui/icons";
-import { useStyles } from "./style";
-import { Link, NavLink } from "react-router-dom";
+  MenuItem
+} from "@material-ui/core"
+import { MenuRounded } from "@material-ui/icons"
+import { useStyles } from "./style"
+import { Link, NavLink } from "react-router-dom"
 
 export const AdminHeader = (props) => {
-  const classes = useStyles();
-  const [anchorEl, setAnchorEl] = useState(null);
+  const classes = useStyles()
+  const [anchorEl, setAnchorEl] = useState(null)
 
-  const closeDropdownHandler = () => setAnchorEl(null);
-  const openDropdownHandler = (e) => setAnchorEl(e.currentTarget);
+  const closeDropdownHandler = () => setAnchorEl(null)
+  const openDropdownHandler = (e) => setAnchorEl(e.currentTarget)
 
   const dropdown = (
     <Menu
@@ -26,6 +26,9 @@ export const AdminHeader = (props) => {
       keepMounted
       onClose={closeDropdownHandler}
     >
+      <MenuItem component={Link} to="/" onClick={closeDropdownHandler}>
+        Home
+      </MenuItem>
       <MenuItem component={Link} to="/admin" onClick={closeDropdownHandler}>
         Panel
       </MenuItem>
@@ -51,7 +54,7 @@ export const AdminHeader = (props) => {
         Orders
       </MenuItem>
     </Menu>
-  );
+  )
 
   return (
     <AppBar position="sticky" className={classes.root}>
@@ -66,6 +69,14 @@ export const AdminHeader = (props) => {
         </Typography>
 
         <Hidden xsDown>
+          <Typography
+            component={NavLink}
+            activeClassName={classes.activeLink}
+            exact
+            to="/"
+          >
+            Home
+          </Typography>
           <Typography
             component={NavLink}
             activeClassName={classes.activeLink}
@@ -106,5 +117,5 @@ export const AdminHeader = (props) => {
         </Hidden>
       </Toolbar>
     </AppBar>
-  );
-};
+  )
+}
